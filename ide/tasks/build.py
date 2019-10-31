@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import zipfile
 
-from celery import task
+from celery import shared_task
 from django.conf import settings
 from django.utils.timezone import now
 
@@ -26,6 +26,7 @@ def _set_resource_limits():
     resource.setrlimit(resource.RLIMIT_NOFILE, (500, 500))  # 500 open files
     resource.setrlimit(resource.RLIMIT_RSS, (30 * 1024 * 1024, 30 * 1024 * 1024))  # 30 MB of memory
     resource.setrlimit(resource.RLIMIT_FSIZE, (20 * 1024 * 1024, 20 * 1024 * 1024))  # 20 MB output files.
+
 
 def save_debug_info(base_dir, build_result, kind, platform, elf_file):
     path = os.path.join(base_dir, 'build', elf_file)
@@ -59,7 +60,7 @@ def store_size_info(project, build_result, platform, zip_file):
         pass
 
 
-@task(ignore_result=True, acks_late=True)
+@shared_task(ignore_result=True, acks_late=True)
 def run_compile(build_result):
     build_result = BuildResult.objects.get(pk=build_result)
     project = build_result.project

@@ -1,7 +1,7 @@
 FROM python:2.7.11
 MAINTAINER Katharine Berry <katharine@pebble.com>
 
-ENV NPM_CONFIG_LOGLEVEL=info NODE_VERSION=4.2.3 DJANGO_VERSION=1.6
+ENV NPM_CONFIG_LOGLEVEL=info NODE_VERSION=4.2.3 DJANGO_VERSION=1.9.12
 
 # Node stuff.
 
@@ -56,7 +56,7 @@ RUN mkdir /sdk2 && \
   tar --strip-components=1 -xj -C /sdk2
 
 ENV SDK_THREE_CHANNEL=release
-ENV SDK_THREE_VERSION=4.0
+ENV SDK_THREE_VERSION=4.3
 
 # Install SDK 3
 RUN mkdir /sdk3 && \
@@ -70,7 +70,6 @@ WORKDIR /code
 RUN rm -rf bower_components && cd /tmp && python /code/manage.py bower install && mv bower_components /code/
 
 RUN python manage.py compilemessages
-
 RUN make -C /code/c-preload
 
 CMD ["sh", "docker_start.sh"]
