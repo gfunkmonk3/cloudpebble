@@ -378,6 +378,9 @@ CloudPebble.Settings = (function() {
             uuid_field.trigger("change");
         });
 
+        // Resetting the form ensures that the values are correctly set when Chrome restores the page after quitting the browser
+        pane.find('form')[0].reset();
+
         live_form.init();
 
         CloudPebble.Sidebar.SetActivePane(pane, {id: 'settings'});
