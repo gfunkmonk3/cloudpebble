@@ -385,6 +385,7 @@ CloudPebble.Dependencies = (function() {
             return CloudPebble.YCM.updateDependencies(result.dependencies);
         }).then(function(result) {
             if (result) {
+                CloudPebble.PublishedMedia.SetDependencyResources(result.data.resources);
                 update_header_list(result.data.libraries)
             }
         });
@@ -552,7 +553,7 @@ CloudPebble.Dependencies = (function() {
     }
 
     /** This sets up the list of headers */
-    function setup_headers_pane(pane, alerts) {
+    function setup_headers_pane(pane) {
         // Select an entire header when it is clicked.
         pane.on('click', 'tbody a', function() {
             select_element(this);

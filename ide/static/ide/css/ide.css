@@ -679,7 +679,7 @@ table.build-results tr.pending .build-state {
     clear: both;
 }
 
-.resource-pane input:not([type=checkbox]):not([type=submit]) {
+.resource-pane input:not([type=checkbox]):not([type=submit]):not([type=number]) {
     width: 435px;
 }
 
@@ -714,6 +714,36 @@ table.build-results tr.pending .build-state {
     width: 188px;
 }
 
+/* Published media pane */
+
+.media-item:not(:first-child) .help-block {
+    display: none;
+}
+
+.media-tool-buttons button {
+    width: initial;
+    min-width: 130px;
+    margin-right: 10px;
+}
+
+.sidebar-error::after {
+    content: "!";
+}
+
+.sidebar-error {
+    background: #e5171f;
+    display: inline-block;
+    color: white;
+    width: 22px;
+    text-align: center;
+    font-family: serif;
+    border-radius: 20px;
+    padding-right: 1px;
+    margin-top: -1px;
+}
+.sidebar-error.hide {
+    display: none;
+}
 
 /* Dependancies pane */
 
@@ -1226,7 +1256,7 @@ button#add-filter {
     display: table;
 }
 
-.edit-resource-target-platforms-enabled:not(:checked) ~ .edit-resource-targets {
+.form-section-toggle:not(:checked) ~ .form-toggleable-section {
     display: none;
 }
 
