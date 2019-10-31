@@ -211,11 +211,11 @@
             <div class="js-file-options file-group hide">
                 <div class="control-group">
                     <div id="js-file-name-option">
-                        <label class="control-label" for="new-js-file-name">{% trans 'Filename' %}</label>
-                        <div class="controls">
-                            <input type="text" id="new-js-file-name" pattern="[a-zA-Z0-9_-]+\.js$">
-                        </div>
+                    <label class="control-label" for="new-js-file-name">{% trans 'Filename' %}</label>
+                    <div class="controls">
+                        <input type="text" id="new-js-file-name" pattern="[a-zA-Z0-9_-]+\.js$">
                     </div>
+                </div>
                     <div class="control-group rocky-only">
                         <label class="control-label" for="new-js-target">{% trans 'Target' context "compilation target" %}</label>
                         <div class="controls">
@@ -538,7 +538,6 @@ var USER_SETTINGS = {
 var DOC_JSON = "{% static 'ide/documentation.json' %}";
 var LIBPEBBLE_PROXY = {{ libpebble_proxy | safe }};
 var REGEXES = _.mapObject(JSON.parse('{{regexes_json|escapejs}}'), function(v) { return new RegExp(v)});
-
 </script>
 
 <script src="/ide/jsi18n/"></script>
@@ -567,6 +566,7 @@ var URL_BOOT_IMG = {
 // TODO: Diorite - update image if needed
 CloudPebble.Init();
 </script>
+
 
 
 
